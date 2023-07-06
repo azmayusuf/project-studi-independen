@@ -1,0 +1,207 @@
+{
+  "intents": [
+    {
+      "intent": "permintaan_bantuan_pelanggan",
+      "examples": [
+        {
+          "text": "Saya mengalami masalah dengan koneksi internet, bisakah Anda membantu saya?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "pertanyaan_harga",
+      "examples": [
+        {
+          "text": "Berapa harga paket internet bulanan MyNet?"
+        },
+        {
+          "text": "harga produk"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "pertanyaan_ketersediaan_layanan",
+      "examples": [
+        {
+          "text": "Apakah koneksi serat optik tersedia di lokasi saya?"
+        },
+        {
+          "text": "ketersediaan layanan"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "pertanyaan_produk",
+      "examples": [
+        {
+          "text": "Apa paket internet yang ditawarkan oleh MyNet?"
+        },
+        {
+          "text": "Produk"
+        },
+        {
+          "text": "produk apa saja"
+        },
+        {
+          "text": "produk yang tersedia"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "pertanyaan_promosi_penawaran",
+      "examples": [
+        {
+          "text": "Apakah MyNet memiliki penawaran spesial atau paket diskon?"
+        },
+        {
+          "text": "promosi dan penawaran"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "pertanyaan_teknis",
+      "examples": [
+        {
+          "text": "Bagaimana cara mengatur router Wi-Fi dari MyNet?"
+        },
+        {
+          "text": "bantuan teknis"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Harga paket internet bulanan kami bervariasi tergantung pada kecepatan dan kuota data yang Anda pilih. Misalnya, Paket Basic dihargai Rp 300.000 per bulan, Paket Premium dihargai Rp 500.000 per bulan, dan Paket Bisnis dihargai Rp 800.000 per bulan."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#pertanyaan_harga",
+      "dialog_node": "Anything else",
+      "previous_sibling": "Welcome",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Kami menawarkan berbagai paket internet seperti Paket Basic dengan kecepatan 10 Mbps dan kuota 50 GB, Paket Premium dengan kecepatan 50 Mbps dan kuota unlimited, dan Paket Bisnis dengan kecepatan 100 Mbps dan fitur tambahan seperti IP statis."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#pertanyaan_produk",
+      "dialog_node": "node_2_1688378636191",
+      "previous_sibling": "node_5_1688378622548"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Untuk mengatur router Wi-Fi dari MyNet, pertama-tama pastikan Anda terhubung ke jaringan Wi-Fi yang dihasilkan oleh router kami. Kemudian, buka browser web dan masukkan alamat IP router yang tertera di manual pengguna. Anda akan diarahkan ke halaman konfigurasi router di mana Anda dapat mengatur pengaturan Wi-Fi, kata sandi, dan fitur lainnya."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#pertanyaan_teknis",
+      "dialog_node": "node_2_1688378674389",
+      "previous_sibling": "node_5_1688378649991"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Untuk mengetahui ketersediaan koneksi serat optik di lokasi Anda, kami membutuhkan informasi detail tentang alamat Anda. Silakan hubungi tim layanan pelanggan kami dan kami akan memeriksa ketersediaan dan memberikan informasi lebih lanjut."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#pertanyaan_ketersediaan_layanan",
+      "dialog_node": "node_5_1688378622548",
+      "previous_sibling": "Anything else"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Ya, kami sering menawarkan penawaran spesial dan paket diskon tertentu. Saat ini, kami memiliki penawaran diskon 20% untuk pelanggan baru selama 3 bulan pertama berlangganan. Silakan kunjungi situs web kami atau hubungi tim layanan pelanggan untuk mendapatkan informasi lebih lanjut tentang penawaran saat ini."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#pertanyaan_promosi_penawaran",
+      "dialog_node": "node_5_1688378649991",
+      "previous_sibling": "node_2_1688378636191"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Tentu, saya dapat membantu Anda. Mohon beri tahu saya masalah yang Anda alami dengan detail, seperti apakah Anda mengalami koneksi yang lambat atau tidak bisa terhubung sama sekali. Saya akan mencoba memberikan solusi atau mengarahkan Anda ke tim dukungan teknis kami."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#permintaan_bantuan_pelanggan",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "learning_opt_out": false,
+  "language": "en",
+  "description": "created for assistant 0a8f8523-a7fc-4126-926d-4dccf64a3f8b",
+  "name": "chat-bot-isp-dialog"
+}
